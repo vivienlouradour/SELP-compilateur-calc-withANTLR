@@ -1,5 +1,7 @@
 package ast;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.List;
 
 public class Head extends AST {
@@ -11,15 +13,7 @@ public class Head extends AST {
         this.varIds = varIds;
     }
 
-//    @Override
-//    public String toString() {
-//        StringBuilder stringBuilder = new StringBuilder();
-//        stringBuilder.append("(");
-//        stringBuilder.append(funcId);
-//        varIds.forEach(stringBuilder::append);
-//        stringBuilder.append(")");
-//        return stringBuilder.toString();
-//    }
+
 
     public Function getFunction(){
         return this.funcId;
@@ -29,8 +23,10 @@ public class Head extends AST {
         return varIds;
     }
 
+
     @Override
-    public int eval() {
-        return 0;
+    public String gen() {
+        //TODO : A FAIRE
+        throw new NotImplementedException();
     }
 }

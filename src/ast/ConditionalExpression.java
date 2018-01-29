@@ -1,7 +1,5 @@
 package ast;
 
-import eval.State;
-
 public class ConditionalExpression extends Expression {
     private Expression exp1;
     private Expression exp2;
@@ -13,19 +11,19 @@ public class ConditionalExpression extends Expression {
         this.exp3 = exp3;
     }
 
-//    @Override
-//    public String toString() {
-//        return "IfExpression(" + exp1 + ", " + exp2 + ", " + exp3 + ")";
-//    }
-
     @Override
-    public int eval() {
-        return 0;
-    }
+    public String gen() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("if(");
+        stringBuilder.append(exp1.gen());
+        stringBuilder.append("){ \n");
+        stringBuilder.append(AST.INDENT + exp2.gen() + "; \n");
+        stringBuilder.append("} \n");
+        stringBuilder.append("else{ \n");
+        stringBuilder.append(AST.INDENT + exp3.gen() + "; \n");
+        stringBuilder.append("} \n");
 
-    @Override
-    public int eval(State<Integer> state, State<FuncDef> funcs) {
-        return exp1.eval(state, funcs) == 0 ? exp3.eval(state, funcs) : exp2.eval(state, funcs);
+        return stringBuilder.toString();
     }
 
 }

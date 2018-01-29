@@ -41,26 +41,12 @@ public interface CalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVarDef(CalcParser.VarDefContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code BinaryMultExpression}
+	 * Visit a parse tree produced by the {@code TernaryExpression}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBinaryMultExpression(CalcParser.BinaryMultExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code BinaryLogicalOrExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBinaryLogicalOrExpression(CalcParser.BinaryLogicalOrExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code BinaryEqualityExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBinaryEqualityExpression(CalcParser.BinaryEqualityExpressionContext ctx);
+	T visitTernaryExpression(CalcParser.TernaryExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Variable}
 	 * labeled alternative in {@link CalcParser#expression}.
@@ -69,12 +55,12 @@ public interface CalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariable(CalcParser.VariableContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code BinaryAddExpression}
+	 * Visit a parse tree produced by the {@code BinaryExpression}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBinaryAddExpression(CalcParser.BinaryAddExpressionContext ctx);
+	T visitBinaryExpression(CalcParser.BinaryExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Literal}
 	 * labeled alternative in {@link CalcParser#expression}.
@@ -82,13 +68,6 @@ public interface CalcVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLiteral(CalcParser.LiteralContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code ConditionalExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitConditionalExpression(CalcParser.ConditionalExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code UnaryExpression}
 	 * labeled alternative in {@link CalcParser#expression}.
@@ -104,12 +83,12 @@ public interface CalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunctionCall(CalcParser.FunctionCallContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code BinaryLogicalAndExpression}
+	 * Visit a parse tree produced by the {@code Boolean}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBinaryLogicalAndExpression(CalcParser.BinaryLogicalAndExpressionContext ctx);
+	T visitBoolean(CalcParser.BooleanContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ParExpression}
 	 * labeled alternative in {@link CalcParser#expression}.

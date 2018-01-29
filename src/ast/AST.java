@@ -3,7 +3,7 @@ package ast;
 import java.lang.reflect.Field;
 
 public abstract class AST {
-    public abstract int eval();
+    public static String INDENT = "  ";
 
     public String toString() {
         // retrieve class of node

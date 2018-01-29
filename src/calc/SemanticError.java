@@ -1,4 +1,4 @@
-package ast;
+package calc;
 
 public class SemanticError {
 }

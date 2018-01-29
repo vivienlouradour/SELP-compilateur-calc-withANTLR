@@ -1,27 +1,17 @@
 package ast;
 
-import eval.State;
-
 public class UnaryExpression extends Expression {
+    private OP op;
     private Expression expression;
 
-    public UnaryExpression(Expression expression){
+    public UnaryExpression(OP op, Expression expression){
+        this.op = op;
         this.expression = expression;
     }
 
-//    @Override
-//    public String toString() {
-//        return  "UnaryExpression(" + this.expression + ")";
-//    }
-
     @Override
-    public int eval() {
-        return 0;
-    }
-
-    @Override
-    public int eval(State<Integer> state, State<FuncDef> funcs) {
-
-        return -1*(this.expression.eval(state, funcs));
+    public String gen() {
+//        return op.gen() + "(" + expression.gen() + ")";
+        return op.gen() + " " + expression.gen();
     }
 }

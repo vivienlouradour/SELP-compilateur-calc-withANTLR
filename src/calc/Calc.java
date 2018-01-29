@@ -1,11 +1,9 @@
 package calc;
 
 import ast.AST;
-import ast.Body;
-import ast.SyntaxError;
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
-
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
 import parser.*;
 
 import java.io.FileInputStream;
@@ -13,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
+//TODO gestion des conditionnalExpression : true + false doit lancer exception
 public class Calc {
     static boolean verbose = false;
 
@@ -33,15 +32,19 @@ public class Calc {
         parser.addErrorListener(new ErrorListener());
 //        ParseTree tree = parser.program();
         ParseTree tree = parser.body();
-        if (verbose) System.out.println(tree.toStringTree(parser));
+        if (verbose)
+            System.out.println(tree.toStringTree(parser));
         if (! ErrorFlag.getErrorFlag()) {
             ASTVisitor visitor = new ASTVisitor();
             AST ast = visitor.visit(tree);
 //            int result = ((Expression)ast).eval();
             if (verbose) { // for debugging purposes
-                int result = ((Body)ast).eval();
-                System.out.println(ast + " => " + result);
+//                int result = ((Body)ast).eval();
+//                System.out.println(ast + " => " + result);
             }
+            String code = ast.gen();
+            System.out.println(code);
+            write(code, inputFile);
 //            if (ast.check()) { // Semantic analysis
 /*            String code = ast.gen();
             if (inputFile != null)

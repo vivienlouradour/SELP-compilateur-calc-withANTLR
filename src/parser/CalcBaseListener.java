@@ -76,37 +76,13 @@ public class CalcBaseListener implements CalcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinaryMultExpression(CalcParser.BinaryMultExpressionContext ctx) { }
+	@Override public void enterTernaryExpression(CalcParser.TernaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinaryMultExpression(CalcParser.BinaryMultExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBinaryLogicalOrExpression(CalcParser.BinaryLogicalOrExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBinaryLogicalOrExpression(CalcParser.BinaryLogicalOrExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBinaryEqualityExpression(CalcParser.BinaryEqualityExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBinaryEqualityExpression(CalcParser.BinaryEqualityExpressionContext ctx) { }
+	@Override public void exitTernaryExpression(CalcParser.TernaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -124,13 +100,13 @@ public class CalcBaseListener implements CalcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinaryAddExpression(CalcParser.BinaryAddExpressionContext ctx) { }
+	@Override public void enterBinaryExpression(CalcParser.BinaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinaryAddExpression(CalcParser.BinaryAddExpressionContext ctx) { }
+	@Override public void exitBinaryExpression(CalcParser.BinaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -143,18 +119,6 @@ public class CalcBaseListener implements CalcListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLiteral(CalcParser.LiteralContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterConditionalExpression(CalcParser.ConditionalExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitConditionalExpression(CalcParser.ConditionalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -184,13 +148,13 @@ public class CalcBaseListener implements CalcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinaryLogicalAndExpression(CalcParser.BinaryLogicalAndExpressionContext ctx) { }
+	@Override public void enterBoolean(CalcParser.BooleanContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinaryLogicalAndExpression(CalcParser.BinaryLogicalAndExpressionContext ctx) { }
+	@Override public void exitBoolean(CalcParser.BooleanContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

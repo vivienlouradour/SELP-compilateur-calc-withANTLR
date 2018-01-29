@@ -2,22 +2,57 @@ package ast;
 
 
 public enum OP {
-    PLUS,
-    MINUS,
-    TIMES,
-    DIVIDE,
-    EQUALS,
-    LESS;
+    //Add
+    PLUS("+"),
+    MINUS("-"),
+
+    //Mult
+    TIMES("*"),
+    DIVIDE("/"),
+
+    //Relational
+    LESS("<"),
+    LESSEQUAL("<="),
+    MORE(">"),
+    MOREEQUAL(">="),
+
+    //Equality
+    EQUALS("=="),
+    NOTEQUALS("!="),
+
+    //Logical
+    AND("&&"),
+    OR("||");
+
+    private final String value;
+
+    private OP(String op){
+        value = op;
+    }
+
+    public String gen(){
+        return this.value;
+    }
 
     public static OP parseOP(String op){
         switch (op){
             case "+" : return PLUS;
             case "-" : return MINUS;
+
             case "*" : return TIMES;
             case "/" : return DIVIDE;
-            case "==" : return EQUALS;
+
             case "<" : return LESS;
-            default: throw new RuntimeException(); //TODO : refine this preliminary hack
+            case "<=" : return LESSEQUAL;
+            case ">" : return MORE;
+            case ">=" : return MOREEQUAL;
+
+            case "==" : return EQUALS;
+            case "!=" : return NOTEQUALS;
+
+            case "&&" : return AND;
+            case "||" : return OR;
+            default: throw new RuntimeException();
         }
     }
 }

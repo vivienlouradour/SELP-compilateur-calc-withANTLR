@@ -58,41 +58,17 @@ public interface CalcListener extends ParseTreeListener {
 	 */
 	void exitVarDef(CalcParser.VarDefContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code BinaryMultExpression}
+	 * Enter a parse tree produced by the {@code TernaryExpression}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterBinaryMultExpression(CalcParser.BinaryMultExpressionContext ctx);
+	void enterTernaryExpression(CalcParser.TernaryExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code BinaryMultExpression}
+	 * Exit a parse tree produced by the {@code TernaryExpression}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitBinaryMultExpression(CalcParser.BinaryMultExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code BinaryLogicalOrExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterBinaryLogicalOrExpression(CalcParser.BinaryLogicalOrExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code BinaryLogicalOrExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitBinaryLogicalOrExpression(CalcParser.BinaryLogicalOrExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code BinaryEqualityExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterBinaryEqualityExpression(CalcParser.BinaryEqualityExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code BinaryEqualityExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitBinaryEqualityExpression(CalcParser.BinaryEqualityExpressionContext ctx);
+	void exitTernaryExpression(CalcParser.TernaryExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Variable}
 	 * labeled alternative in {@link CalcParser#expression}.
@@ -106,17 +82,17 @@ public interface CalcListener extends ParseTreeListener {
 	 */
 	void exitVariable(CalcParser.VariableContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code BinaryAddExpression}
+	 * Enter a parse tree produced by the {@code BinaryExpression}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterBinaryAddExpression(CalcParser.BinaryAddExpressionContext ctx);
+	void enterBinaryExpression(CalcParser.BinaryExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code BinaryAddExpression}
+	 * Exit a parse tree produced by the {@code BinaryExpression}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitBinaryAddExpression(CalcParser.BinaryAddExpressionContext ctx);
+	void exitBinaryExpression(CalcParser.BinaryExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Literal}
 	 * labeled alternative in {@link CalcParser#expression}.
@@ -129,18 +105,6 @@ public interface CalcListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLiteral(CalcParser.LiteralContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code ConditionalExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterConditionalExpression(CalcParser.ConditionalExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ConditionalExpression}
-	 * labeled alternative in {@link CalcParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitConditionalExpression(CalcParser.ConditionalExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code UnaryExpression}
 	 * labeled alternative in {@link CalcParser#expression}.
@@ -166,17 +130,17 @@ public interface CalcListener extends ParseTreeListener {
 	 */
 	void exitFunctionCall(CalcParser.FunctionCallContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code BinaryLogicalAndExpression}
+	 * Enter a parse tree produced by the {@code Boolean}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterBinaryLogicalAndExpression(CalcParser.BinaryLogicalAndExpressionContext ctx);
+	void enterBoolean(CalcParser.BooleanContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code BinaryLogicalAndExpression}
+	 * Exit a parse tree produced by the {@code Boolean}
 	 * labeled alternative in {@link CalcParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitBinaryLogicalAndExpression(CalcParser.BinaryLogicalAndExpressionContext ctx);
+	void exitBoolean(CalcParser.BooleanContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ParExpression}
 	 * labeled alternative in {@link CalcParser#expression}.

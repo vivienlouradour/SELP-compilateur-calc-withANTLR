@@ -1,6 +1,7 @@
 package parser;
 
 import ast.*;
+import ast.Boolean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class ASTVisitor extends CalcBaseVisitor<AST> {
         List<VarDef> varDefs = new ArrayList<>();
         for (CalcParser.VarDefContext varDefCtx : varDefCtxs)
             varDefs.add((VarDef)visit(varDefCtx));
+
         // retrieve AST for expression
         Expression expr = (Expression)visit(ctx.expression());
         // return AST for program
@@ -67,46 +69,60 @@ public class ASTVisitor extends CalcBaseVisitor<AST> {
     }
 
     @Override
+    public AST visitLiteral(CalcParser.LiteralContext ctx) {
+        return new Literal(Integer.parseInt(ctx.getText()));
+    }
+
+    @Override
     public AST visitVariableId(CalcParser.VariableIdContext ctx){
         return new Variable(ctx.getText());
     }
 
     @Override
-    public AST visitMinusExpression(CalcParser.MinusExpressionContext ctx){
-        Expression expression = (Expression)visit(ctx.expression()); //first operand
-        return new UnaryExpression(expression);
-
-    }
-
-    @Override
-    public AST visitConditionalExpression(CalcParser.ConditionalExpressionContext ctx){
-        List<CalcParser.ExpressionContext> expressionCtxs = ctx.expression();
-        List<Expression> expressions = new ArrayList<>();
-        for (CalcParser.ExpressionContext expressionCtx : expressionCtxs){
-            expressions.add((Expression)visit(expressionCtx));
-        }
-        return new ConditionalExpression(expressions.get(0), expressions.get(1), expressions.get(2));
-    }
-
-    @Override
     public AST visitVariable(CalcParser.VariableContext ctx){
+
         return new Variable(ctx.getText());
+    }
+
+
+    @Override
+    public AST visitBoolean(CalcParser.BooleanContext ctx){
+        return new Boolean(ctx.getChild(0).getText());
+    }
+
+    @Override
+    public AST visitUnaryExpression(CalcParser.UnaryExpressionContext ctx){
+        OP op = OP.parseOP(ctx.getChild(0).getText());
+        Expression expression = (Expression)visit(ctx.expression()); //first operand
+        return new UnaryExpression(op, expression);
+    }
+
+    @Override
+    public AST visitTernaryExpression(CalcParser.TernaryExpressionContext ctx){
+        List<CalcParser.ExpressionContext> expressionCtxs = ctx.expression();
+        Expression expression1 = (Expression)visit(expressionCtxs.get(0));
+        Expression expression2 = (Expression)visit(expressionCtxs.get(1));
+        Expression expression3 = (Expression)visit(expressionCtxs.get(2));
+
+        return new ConditionalExpression(expression1, expression2, expression3);
     }
 
     @Override
     public AST visitBinaryExpression(CalcParser.BinaryExpressionContext ctx){
-        OP op = OP.parseOP(ctx.OP().getText());
+        // recupere l'operateur
+        OP op = OP.parseOP(ctx.getChild(1).getText());
+
+        //recupere les deux expressions
         List<CalcParser.ExpressionContext> expressionCtxs = ctx.expression();
-        List<Expression> expressions = new ArrayList<>();
-        for (CalcParser.ExpressionContext expressionCtx : expressionCtxs) {
-            expressions.add((Expression)visit(expressionCtx));
-        }
-        return new BinaryExpression(op, expressions.get(0), expressions.get(1));
+        Expression expression1 = (Expression)visit(expressionCtxs.get(0));
+        Expression expression2 = (Expression)visit(expressionCtxs.get(1));
+
+        return new BinaryExpression(op, expression1, expression2);
     }
 
     @Override
-    public AST visitLiteral(CalcParser.LiteralContext ctx) {
-        return new Literal(Integer.parseInt(ctx.getText()));
+    public AST visitParExpression(CalcParser.ParExpressionContext ctx){
+        return new ParExpression((Expression)visit(ctx.expression()));
     }
 
     @Override

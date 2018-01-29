@@ -13,43 +13,40 @@ body     : varDef* expression
 varDef   : variableId '=' expression
          ;
 
-expression : LITERAL                                                     # Literal
+expression : LITERAL                                                    # Literal
            | variableId                                                 # Variable
+           | BOOLEAN                                                    # Boolean
            | (MINUS | NOT) expression                                   # UnaryExpression
-           | expression OpMult expression                               # BinaryMultExpression
-           | expression OpAdd expression                                # BinaryAddExpression
-           | expression OpRelational expression                         # BinaryRelationalExpression
-           | expression OpEquality expression                           # BinaryEqualityExpression
-           | expression OpLogicalAnd expression                         # BinaryLogicalAndExpression
-           | expression OpLogicalOr expression                          # BinaryLogicalOrExpression
+           | expression (MINUS | PLUS) expression                         # BinaryExpression
+           | expression OpMult expression                               # BinaryExpression
+           | expression OpRelational expression                         # BinaryExpression
+           | expression OpEquality expression                           # BinaryExpression
+           | expression AND expression                                  # BinaryExpression
+           | expression OR expression                                   # BinaryExpression
            | <assoc = right> expression '?' expression ':' expression   # TernaryExpression
-           | functionId '(' expression* ')'                             # FunctionCall
            | '(' expression ')'                                         # ParExpression
+           | functionId '(' expression* ')'                             # FunctionCall
            ;
-
-OpAdd : MINUS | '+';
-OpMult : '*' | '/';
-OpRelational : '<' | '>' | '<=' | '>=';
-OpEquality : '==' | '!=';
-OpLogicalAnd : '&&';
-OpLogicalOr : '||';
-
-
-
-MINUS : '-'
-      ;
-
-NOT : '!'
-    ;
-
-BOOLEAN : 'true'
-        | 'false'
-        ;
 
 variableId : IDENTIFIER
            ;
 functionId : IDENTIFIER
            ;
+//Lexical rules
+OpMult : '*' | '/';
+OpRelational : '<' | '>' | '<=' | '>=';
+OpEquality : '==' | '!=';
+
+AND : '&&';
+OR : '||';
+
+MINUS : '-';
+PLUS : '+';
+NOT : '!';
+
+BOOLEAN : 'true' | 'false';
+
+
 
 
 IDENTIFIER : ('a'..'z')('a'..'z' | '0'..'9')*

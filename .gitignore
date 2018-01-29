@@ -2,3 +2,6 @@
 /gen/*
 /out/*
 /.idea/*
+/test/*.c
+/test/*.out
+/test/*.txt

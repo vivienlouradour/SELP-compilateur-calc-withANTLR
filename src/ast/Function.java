@@ -1,5 +1,7 @@
 package ast;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class Function extends AST {
     private String identifier;
 
@@ -7,16 +9,13 @@ public class Function extends AST {
         this.identifier = identifier;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Function(" + this.identifier + ")";
-//    }
-
     public String getName(){
         return this.identifier;
     }
+
     @Override
-    public int eval() {
-        return 0;
+    public String gen() {
+        //TODO : A FAIRE
+        throw new NotImplementedException();
     }
 }
