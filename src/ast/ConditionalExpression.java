@@ -13,17 +13,19 @@ public class ConditionalExpression extends Expression {
 
     @Override
     public String gen() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("if(");
-        stringBuilder.append(exp1.gen());
-        stringBuilder.append("){ \n");
-        stringBuilder.append(AST.INDENT + exp2.gen() + "; \n");
-        stringBuilder.append("} \n");
-        stringBuilder.append("else{ \n");
-        stringBuilder.append(AST.INDENT + exp3.gen() + "; \n");
-        stringBuilder.append("} \n");
+//        StringBuilder stringBuilder = new StringBuilder();
+//        stringBuilder.append("if(");
+//        stringBuilder.append(exp1.gen());
+//        stringBuilder.append("){ \n");
+//        stringBuilder.append(AST.INDENT + exp2.gen() + "; \n");
+//        stringBuilder.append("} \n");
+//        stringBuilder.append("else{ \n");
+//        stringBuilder.append(AST.INDENT + exp3.gen() + "; \n");
+//        stringBuilder.append("} \n");
+//
+//        return stringBuilder.toString();
 
-        return stringBuilder.toString();
+        return "(" + exp1.gen() + " ? " + exp2.gen() + " : " + exp3.gen() + ")";
     }
 
 }

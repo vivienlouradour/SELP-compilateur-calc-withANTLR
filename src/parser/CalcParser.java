@@ -454,9 +454,9 @@ public class CalcParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
+		public TerminalNode OpMult() { return getToken(CalcParser.OpMult, 0); }
 		public TerminalNode MINUS() { return getToken(CalcParser.MINUS, 0); }
 		public TerminalNode PLUS() { return getToken(CalcParser.PLUS, 0); }
-		public TerminalNode OpMult() { return getToken(CalcParser.OpMult, 0); }
 		public TerminalNode OpRelational() { return getToken(CalcParser.OpRelational, 0); }
 		public TerminalNode OpEquality() { return getToken(CalcParser.OpEquality, 0); }
 		public TerminalNode AND() { return getToken(CalcParser.AND, 0); }
@@ -702,15 +702,7 @@ public class CalcParser extends Parser {
 						setState(74);
 						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
 						setState(75);
-						_la = _input.LA(1);
-						if ( !(_la==MINUS || _la==PLUS) ) {
-						_errHandler.recoverInline(this);
-						}
-						else {
-							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-							_errHandler.reportMatch(this);
-							consume();
-						}
+						match(OpMult);
 						setState(76);
 						expression(10);
 						}
@@ -722,7 +714,15 @@ public class CalcParser extends Parser {
 						setState(77);
 						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
 						setState(78);
-						match(OpMult);
+						_la = _input.LA(1);
+						if ( !(_la==MINUS || _la==PLUS) ) {
+						_errHandler.recoverInline(this);
+						}
+						else {
+							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+							_errHandler.reportMatch(this);
+							consume();
+						}
 						setState(79);
 						expression(9);
 						}
@@ -943,8 +943,8 @@ public class CalcParser extends Parser {
 		"\16\b\29K\7\21\2\2:;\t\2\2\2;K\5\f\7\f<=\7\3\2\2=>\5\f\7\2>?\7\5\2\2?"+
 		"K\3\2\2\2@A\5\20\t\2AE\7\3\2\2BD\5\f\7\2CB\3\2\2\2DG\3\2\2\2EC\3\2\2\2"+
 		"EF\3\2\2\2FH\3\2\2\2GE\3\2\2\2HI\7\5\2\2IK\3\2\2\2J\66\3\2\2\2J8\3\2\2"+
-		"\2J9\3\2\2\2J:\3\2\2\2J<\3\2\2\2J@\3\2\2\2Kf\3\2\2\2LM\f\13\2\2MN\t\3"+
-		"\2\2Ne\5\f\7\fOP\f\n\2\2PQ\7\t\2\2Qe\5\f\7\13RS\f\t\2\2ST\7\n\2\2Te\5"+
+		"\2J9\3\2\2\2J:\3\2\2\2J<\3\2\2\2J@\3\2\2\2Kf\3\2\2\2LM\f\13\2\2MN\7\t"+
+		"\2\2Ne\5\f\7\fOP\f\n\2\2PQ\t\3\2\2Qe\5\f\7\13RS\f\t\2\2ST\7\n\2\2Te\5"+
 		"\f\7\nUV\f\b\2\2VW\7\13\2\2We\5\f\7\tXY\f\7\2\2YZ\7\f\2\2Ze\5\f\7\b[\\"+
 		"\f\6\2\2\\]\7\r\2\2]e\5\f\7\7^_\f\5\2\2_`\7\7\2\2`a\5\f\7\2ab\7\b\2\2"+
 		"bc\5\f\7\5ce\3\2\2\2dL\3\2\2\2dO\3\2\2\2dR\3\2\2\2dU\3\2\2\2dX\3\2\2\2"+

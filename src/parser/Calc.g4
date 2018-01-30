@@ -17,8 +17,8 @@ expression : LITERAL                                                    # Litera
            | variableId                                                 # Variable
            | BOOLEAN                                                    # Boolean
            | (MINUS | NOT) expression                                   # UnaryExpression
-           | expression (MINUS | PLUS) expression                         # BinaryExpression
            | expression OpMult expression                               # BinaryExpression
+           | expression (MINUS | PLUS) expression                       # BinaryExpression
            | expression OpRelational expression                         # BinaryExpression
            | expression OpEquality expression                           # BinaryExpression
            | expression AND expression                                  # BinaryExpression
@@ -27,6 +27,7 @@ expression : LITERAL                                                    # Litera
            | '(' expression ')'                                         # ParExpression
            | functionId '(' expression* ')'                             # FunctionCall
            ;
+
 
 variableId : IDENTIFIER
            ;

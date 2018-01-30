@@ -1,4 +1,4 @@
-package parser;
+package calc;
 
 public class SemanticException extends RuntimeException {
     public SemanticException(String message){

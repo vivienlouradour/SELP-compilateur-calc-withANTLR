@@ -15,7 +15,7 @@ public class BinaryExpression extends Expression {
 
     @Override
     public String gen() {
-//        return "( " + leftExpression.gen() + " " + operande.gen() + " " + rightExpression.gen() + " )";
-        return leftExpression.gen() + " " + operande.gen() + " " + rightExpression.gen();
+        return "( " + leftExpression.gen() + " " + operande.gen() + " " + rightExpression.gen() + " )";
+//        return leftExpression.gen() + " " + operande.gen() + " " + rightExpression.gen();
     }
 }

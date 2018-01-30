@@ -9,6 +9,6 @@ public class Boolean extends Expression{
 
     @Override
     public String gen() {
-        return value ? "true" : "false";
+        return value ? "1" : "0";
     }
 }

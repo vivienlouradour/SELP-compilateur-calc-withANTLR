@@ -22,7 +22,9 @@ public enum OP {
 
     //Logical
     AND("&&"),
-    OR("||");
+    OR("||"),
+
+    NOT("!");
 
     private final String value;
 
@@ -52,6 +54,8 @@ public enum OP {
 
             case "&&" : return AND;
             case "||" : return OR;
+
+            case "!" : return NOT;
             default: throw new RuntimeException();
         }
     }
