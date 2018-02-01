@@ -40,4 +40,16 @@ public abstract class AST {
      * @return
      */
     public abstract String gen();
+
+    public abstract ASTType getType();
+
+    public boolean check(){
+        try{
+            this.getType();
+            return true;
+        }
+        catch (Exception ex){
+            return false;
+        }
+    }
 }

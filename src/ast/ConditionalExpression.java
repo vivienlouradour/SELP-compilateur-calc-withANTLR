@@ -1,5 +1,7 @@
 package ast;
 
+import calc.SemanticException;
+
 public class ConditionalExpression extends Expression {
     private Expression exp1;
     private Expression exp2;
@@ -26,6 +28,16 @@ public class ConditionalExpression extends Expression {
 //        return stringBuilder.toString();
 
         return "(" + exp1.gen() + " ? " + exp2.gen() + " : " + exp3.gen() + ")";
+    }
+
+
+    @Override
+    public ASTType getType() {
+        if(this.exp1.getType() != ASTType.Boolean)
+            throw new SemanticException(this.exp1 + " must be a boolean expression.");
+        if(this.exp2.getType() != this.exp3.getType())
+            throw new SemanticException("Both expressions has to be the same type.");
+        return this.exp2.getType();
     }
 
 }

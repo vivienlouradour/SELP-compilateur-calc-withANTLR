@@ -29,4 +29,9 @@ public class Head extends AST {
         //TODO : A FAIRE
         throw new NotImplementedException();
     }
+
+    @Override
+    public ASTType getType() {
+        throw new NotImplementedException();
+    }
 }

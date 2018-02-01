@@ -16,4 +16,9 @@ public class VarDef extends AST {
         //TODO : A FAIRE
         throw new NotImplementedException();
     }
+
+    @Override
+    public ASTType getType() {
+        throw new NotImplementedException();
+    }
 }

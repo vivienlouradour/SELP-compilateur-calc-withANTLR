@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 //TODO gestion des conditionnalExpression : true + false doit lancer exception
+//      Faire ça dans l'analyse sémantique : on autorise de parser 1 + true mais on lance erreur apres
 public class Calc {
     static boolean verbose = false;
 
@@ -46,6 +47,9 @@ public class Calc {
             System.out.println(code);
             write(code, inputFile);
 //            if (ast.check()) { // Semantic analysis
+            //TODO : Check : renvoi faux si erreur
+            //TODO : rajouter le test de EOF pour erreur si not EOF
+            //TODO : déléguer division par 0 à GCC (si les tests ne passent pas, temps pis, l'indiquer dans le readme)
 /*            String code = ast.gen();
             if (inputFile != null)
                 write(code, inputFile);

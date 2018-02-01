@@ -11,4 +11,9 @@ public class ParExpression extends Expression{
     public String gen() {
         return "( " + this.expression.gen() + " )";
     }
+
+    @Override
+    public ASTType getType() {
+        return this.expression.getType();
+    }
 }

@@ -1,5 +1,7 @@
 package ast;
 
+import calc.SemanticException;
+
 public class BinaryExpression extends Expression {
 
     private Expression leftExpression;
@@ -18,4 +20,47 @@ public class BinaryExpression extends Expression {
         return "( " + leftExpression.gen() + " " + operande.gen() + " " + rightExpression.gen() + " )";
 //        return leftExpression.gen() + " " + operande.gen() + " " + rightExpression.gen();
     }
+
+    @Override
+    public ASTType getType(){
+        switch (this.operande.gen()){
+            case "+" :
+            case "-" :
+            case "*" :
+            case "/" :
+                if(this.leftExpression.getType() != ASTType.Literal)
+                    throw new SemanticException(this.leftExpression.toString() + " must be a literal expression");
+                if(this.rightExpression.getType() != ASTType.Literal)
+                    throw new SemanticException(this.rightExpression.toString() + " must be a literal expression");
+                return ASTType.Literal;
+
+            case "<" :
+            case "<=" :
+            case ">" :
+            case ">=" :
+                if(this.leftExpression.getType() != ASTType.Literal)
+                    throw new SemanticException(this.leftExpression.toString() + " must be a literal expression");
+                if(this.rightExpression.getType() != ASTType.Literal)
+                    throw new SemanticException(this.rightExpression.toString() + " must be a literal expression");
+                return ASTType.Boolean;
+
+            case "==" :
+            case "!=" :
+                if(this.leftExpression.getType() != this.rightExpression.getType())
+                    throw new SemanticException("Both expressions has to be same type");
+                return ASTType.Boolean;
+
+            case "&&" :
+            case "||" :
+                if(this.leftExpression.getType() != ASTType.Boolean)
+                    throw new SemanticException(this.leftExpression.toString() + " must be a boolean expression");
+                if(this.rightExpression.getType() != ASTType.Boolean)
+                    throw new SemanticException(this.rightExpression.toString() + " must be a boolean expression");
+                return ASTType.Boolean;
+
+//            case "!" : return ASTType.Boolean;
+            default: throw new RuntimeException();
+        }
+    }
+
 }

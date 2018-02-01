@@ -11,4 +11,11 @@ public class Boolean extends Expression{
     public String gen() {
         return value ? "1" : "0";
     }
+
+
+    @Override
+    public ASTType getType() {
+        return ASTType.Boolean;
+    }
+
 }

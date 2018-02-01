@@ -21,6 +21,10 @@ public class FuncDef extends AST {
         throw new NotImplementedException();
     }
 
+    @Override
+    public ASTType getType() {
+        throw new NotImplementedException();
+    }
 
 
 }

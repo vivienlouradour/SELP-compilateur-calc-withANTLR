@@ -1,5 +1,7 @@
 package ast;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.List;
 
 public class Body extends AST {
@@ -22,6 +24,13 @@ public class Body extends AST {
                         + "}\n"; //TODO; a changer plus tard vers Program
         return result;
     }
+
+    @Override
+    public ASTType getType() {
+        throw new NotImplementedException();
+    }
+
+
 
 
 }

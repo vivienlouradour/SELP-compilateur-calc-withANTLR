@@ -1,5 +1,7 @@
 package ast;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class Variable extends Expression {
     private String value;
 
@@ -14,5 +16,10 @@ public class Variable extends Expression {
     @Override
     public String gen() {
         return this.value;
+    }
+
+    @Override
+    public ASTType getType() {
+        throw new NotImplementedException();
     }
 }

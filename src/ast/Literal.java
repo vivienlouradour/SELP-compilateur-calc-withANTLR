@@ -12,4 +12,9 @@ public class Literal extends Expression {
     public String gen() {
         return Integer.toString(this.value);
     }
+
+    @Override
+    public ASTType getType() {
+        return ASTType.Literal;
+    }
 }
