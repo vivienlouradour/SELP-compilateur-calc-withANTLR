@@ -1,6 +1,6 @@
 package ast;
 
-import java.util.List;
+import eval.State;
 
 public class ParExpression extends Expression{
     private Expression expression;
@@ -10,12 +10,17 @@ public class ParExpression extends Expression{
     }
 
     @Override
-    public String gen(List<Variable> vars) {
-        return "( " + this.expression.gen(vars) + " )";
+    public String gen() {
+        return "( " + this.expression.gen() + " )";
     }
 
     @Override
     public ASTType getType() {
         return this.expression.getType();
+    }
+
+    @Override
+    public void checkDeclarations(State<Variable> vars) {
+        this.expression.checkDeclarations(vars);
     }
 }

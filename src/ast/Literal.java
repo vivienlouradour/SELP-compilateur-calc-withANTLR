@@ -1,7 +1,7 @@
 package ast;
 
 
-import java.util.List;
+import eval.State;
 
 public class Literal extends Expression {
     private int value;
@@ -11,12 +11,17 @@ public class Literal extends Expression {
 
 
     @Override
-    public String gen(List<Variable> vars) {
+    public String gen() {
         return Integer.toString(this.value);
     }
 
     @Override
     public ASTType getType() {
         return ASTType.Literal;
+    }
+
+    @Override
+    public void checkDeclarations(State<Variable> vars) {
+
     }
 }

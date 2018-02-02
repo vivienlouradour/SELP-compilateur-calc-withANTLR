@@ -1,5 +1,6 @@
 package ast;
 
+import eval.State;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
@@ -14,13 +15,18 @@ public class Program extends AST {
     }
 
     @Override
-    public String gen(List<Variable> vars) {
+    public String gen() {
         //TODO : A FAIRE
         throw new NotImplementedException();
     }
 
     @Override
     public ASTType getType() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void checkDeclarations(State<Variable> vars) {
         throw new NotImplementedException();
     }
 }

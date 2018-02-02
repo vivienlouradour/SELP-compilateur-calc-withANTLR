@@ -1,8 +1,7 @@
 package ast;
 
 import calc.SemanticException;
-
-import java.util.List;
+import eval.State;
 
 public class BinaryExpression extends Expression {
 
@@ -18,10 +17,12 @@ public class BinaryExpression extends Expression {
 
 
     @Override
-    public String gen(List<Variable> vars) {
-        return "( " + leftExpression.gen(vars) + " " + operande.toString() + " " + rightExpression.gen(vars) + " )";
+    public String gen() {
+        return "( " + leftExpression.gen() + " " + operande.toString() + " " + rightExpression.gen() + " )";
 //        return leftExpression.toString() + " " + operande.toString() + " " + rightExpression.toString();
     }
+
+
 
     @Override
     public ASTType getType(){
@@ -63,6 +64,12 @@ public class BinaryExpression extends Expression {
 //            case "!" : return ASTType.Boolean;
             default: throw new RuntimeException();
         }
+    }
+
+    @Override
+    public void checkDeclarations(State<Variable> vars) {
+        this.rightExpression.checkDeclarations(vars);
+        this.leftExpression.checkDeclarations(vars);
     }
 
 }

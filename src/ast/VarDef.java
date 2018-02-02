@@ -1,8 +1,8 @@
 package ast;
 
+import calc.SemanticException;
+import eval.State;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.List;
 
 public class VarDef extends AST {
     private Variable varId;
@@ -16,14 +16,22 @@ public class VarDef extends AST {
 
 
     @Override
-    public String gen(List<Variable> vars) {
-        this.varId.setType(this.expr.getType());
-        vars.add(this.varId);
-        return "int " + this.varId.getValue() + " = " + this.expr.gen(vars) + ";";
+    public String gen() {
+        return "int " + this.varId.getValue() + " = " + this.expr.gen() + ";";
     }
 
     @Override
     public ASTType getType() {
         throw new NotImplementedException();
+    }
+
+    @Override
+    public void checkDeclarations(State<Variable> vars) {
+        //Si la variable à déjà été définie
+        if(vars.lookup(this.varId.getValue()) != null)
+            throw new SemanticException(this + " already defined.");
+        this.expr.checkDeclarations(vars);
+        this.varId.setType(this.expr.getType());
+        vars.put(this.varId.getValue(), this.varId);
     }
 }

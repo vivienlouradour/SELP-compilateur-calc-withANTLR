@@ -1,8 +1,7 @@
 package ast;
 
 import calc.SemanticException;
-
-import java.util.List;
+import eval.State;
 
 public class ConditionalExpression extends Expression {
     private Expression exp1;
@@ -16,8 +15,8 @@ public class ConditionalExpression extends Expression {
     }
 
     @Override
-    public String gen(List<Variable> vars) {
-        return "(" + exp1.gen(vars) + " ? " + exp2.gen(vars) + " : " + exp3.gen(vars) + ")";
+    public String gen() {
+        return "(" + exp1.gen() + " ? " + exp2.gen() + " : " + exp3.gen() + ")";
     }
 
 
@@ -28,6 +27,13 @@ public class ConditionalExpression extends Expression {
         if(this.exp2.getType() != this.exp3.getType())
             throw new SemanticException("Both expressions has to be the same type.");
         return this.exp2.getType();
+    }
+
+    @Override
+    public void checkDeclarations(State<Variable> vars) {
+        this.exp1.checkDeclarations(vars);
+        this.exp2.checkDeclarations(vars);
+        this.exp3.checkDeclarations(vars);
     }
 
 }

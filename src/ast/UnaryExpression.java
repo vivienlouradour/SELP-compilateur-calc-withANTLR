@@ -1,8 +1,7 @@
 package ast;
 
 import calc.SemanticException;
-
-import java.util.List;
+import eval.State;
 
 public class UnaryExpression extends Expression {
     private OP op;
@@ -14,8 +13,8 @@ public class UnaryExpression extends Expression {
     }
 
     @Override
-    public String gen(List<Variable> vars) {
-        return "(" + op.toString() + "(" + expression.gen(vars) + ")" + ")";
+    public String gen() {
+        return "(" + op.toString() + "(" + expression.gen() + ")" + ")";
 //        return op.toString() + " " + expression.toString();
     }
 
@@ -33,5 +32,10 @@ public class UnaryExpression extends Expression {
             default:
                 throw new RuntimeException();
         }
+    }
+
+    @Override
+    public void checkDeclarations(State<Variable> vars) {
+        this.expression.checkDeclarations(vars);
     }
 }

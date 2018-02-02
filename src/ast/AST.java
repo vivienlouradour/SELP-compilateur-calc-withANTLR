@@ -5,7 +5,6 @@ import eval.State;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AST {
     public static String INDENT = "  ";
@@ -44,22 +43,31 @@ public abstract class AST {
      * Génère du code C
      * @return
      */
-    public abstract String gen(List<Variable> vars);
+    public abstract String gen();
 
-    public String gen(){
-        return this.gen(new ArrayList<>());
-    }
 
-    public abstract ASTType getType();
+    /**
+     * Calcule le type de retour de l'AST (Boolean ou Literal).
+     * Lance une SemanticException si il y a une incohérence de type (ex : a = 3 + true)
+     * @throws SemanticException
+     * @return
+     */
+    public abstract ASTType getType() throws SemanticException;
 
     /**
      * Vérifie la validité du typage du programme (boolean/int)
      * @throws SemanticException
      */
     public void check() throws SemanticException{
-//        this.checkDeclarations(new ArrayList<>());
+        this.checkDeclarations(new State<>());
         this.getType();
     }
 
-    //public abstract void checkDeclarations(List<Variable> vars);
+    /**
+     * Vérifie que les déclarations/appels de variables/fonctions sont cohérentes (check estDéfinie lors d'un appel et check !estDéfinie lors d'une définition)
+     * Définie également le type de retour (Boolean/Literal) des variables/fonctions, sans vérifier la cohérence de type.
+     * @throws SemanticException
+     * @param vars
+     */
+    public abstract void checkDeclarations(State<Variable> vars) throws SemanticException;
 }

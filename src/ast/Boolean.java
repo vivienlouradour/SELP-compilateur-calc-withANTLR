@@ -1,6 +1,6 @@
 package ast;
 
-import java.util.List;
+import eval.State;
 
 public class Boolean extends Expression{
     private boolean value;
@@ -10,7 +10,7 @@ public class Boolean extends Expression{
     }
 
     @Override
-    public String gen(List<Variable> vars) {
+    public String gen() {
         return value ? "1" : "0";
     }
 
@@ -18,6 +18,11 @@ public class Boolean extends Expression{
     @Override
     public ASTType getType() {
         return ASTType.Boolean;
+    }
+
+    @Override
+    public void checkDeclarations(State<Variable> vars) {
+
     }
 
 }
