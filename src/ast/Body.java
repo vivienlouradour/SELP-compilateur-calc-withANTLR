@@ -1,5 +1,6 @@
 package ast;
 
+import eval.State;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
@@ -16,21 +17,22 @@ public class Body extends AST {
 
 
     @Override
-    public String gen() {
-        String result = "#include <stdio.h>\n"
-                        + "\n"
-                        + "int main() {\n"
-                        + AST.INDENT + "return printf(\"%i\\n\", " + exp.gen() + ");\n"
-                        + "}\n"; //TODO; a changer plus tard vers Program
-        return result;
+    public String gen(List<Variable> vars) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("#include <stdio.h>\n\n");
+        stringBuilder.append("int main() {\n");
+
+        //Définition des variables
+        defs.forEach(varDef -> stringBuilder.append(AST.INDENT + varDef.gen(vars) + "\n"));
+
+        stringBuilder.append(AST.INDENT + "return printf(\"%i\\n\", " + exp.gen(vars) + ");\n");
+        stringBuilder.append("}\n");
+
+        return stringBuilder.toString();
     }
 
     @Override
     public ASTType getType() {
-        throw new NotImplementedException();
+        return this.exp.getType();
     }
-
-
-
-
 }

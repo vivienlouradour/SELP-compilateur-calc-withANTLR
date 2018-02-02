@@ -2,6 +2,8 @@ package ast;
 
 import calc.SemanticException;
 
+import java.util.List;
+
 public class BinaryExpression extends Expression {
 
     private Expression leftExpression;
@@ -16,14 +18,14 @@ public class BinaryExpression extends Expression {
 
 
     @Override
-    public String gen() {
-        return "( " + leftExpression.gen() + " " + operande.gen() + " " + rightExpression.gen() + " )";
-//        return leftExpression.gen() + " " + operande.gen() + " " + rightExpression.gen();
+    public String gen(List<Variable> vars) {
+        return "( " + leftExpression.gen(vars) + " " + operande.toString() + " " + rightExpression.gen(vars) + " )";
+//        return leftExpression.toString() + " " + operande.toString() + " " + rightExpression.toString();
     }
 
     @Override
     public ASTType getType(){
-        switch (this.operande.gen()){
+        switch (this.operande.toString()){
             case "+" :
             case "-" :
             case "*" :

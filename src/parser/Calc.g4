@@ -2,13 +2,13 @@ grammar Calc;
 
 // syntactic rules
 
-program  : funcDef* body
+program  : funcDef* body EOF
          ;
 funcDef : '(' 'defun' head body ')'
          ;
 head     : '(' functionId variableId* ')'
          ;
-body     : varDef* expression
+body     : varDef* expression EOF
          ;
 varDef   : variableId '=' expression
          // | variableId '=' booleanExpression

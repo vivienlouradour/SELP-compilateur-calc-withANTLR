@@ -2,6 +2,8 @@ package ast;
 
 import calc.SemanticException;
 
+import java.util.List;
+
 public class ConditionalExpression extends Expression {
     private Expression exp1;
     private Expression exp2;
@@ -14,20 +16,8 @@ public class ConditionalExpression extends Expression {
     }
 
     @Override
-    public String gen() {
-//        StringBuilder stringBuilder = new StringBuilder();
-//        stringBuilder.append("if(");
-//        stringBuilder.append(exp1.gen());
-//        stringBuilder.append("){ \n");
-//        stringBuilder.append(AST.INDENT + exp2.gen() + "; \n");
-//        stringBuilder.append("} \n");
-//        stringBuilder.append("else{ \n");
-//        stringBuilder.append(AST.INDENT + exp3.gen() + "; \n");
-//        stringBuilder.append("} \n");
-//
-//        return stringBuilder.toString();
-
-        return "(" + exp1.gen() + " ? " + exp2.gen() + " : " + exp3.gen() + ")";
+    public String gen(List<Variable> vars) {
+        return "(" + exp1.gen(vars) + " ? " + exp2.gen(vars) + " : " + exp3.gen(vars) + ")";
     }
 
 

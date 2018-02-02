@@ -11,8 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
-//TODO gestion des conditionnalExpression : true + false doit lancer exception
-//      Faire ça dans l'analyse sémantique : on autorise de parser 1 + true mais on lance erreur apres
+//TODO : gestion des pb de compilation gcc (tests échous alors qu'ils ne devraient pas)
 public class Calc {
     static boolean verbose = false;
 
@@ -39,25 +38,28 @@ public class Calc {
             ASTVisitor visitor = new ASTVisitor();
             AST ast = visitor.visit(tree);
 //            int result = ((Expression)ast).eval();
-            if (verbose) { // for debugging purposes
+//            if (verbose) { // for debugging purposes
 //                int result = ((Body)ast).eval();
 //                System.out.println(ast + " => " + result);
+//            }
+//            String code = ast.toString();
+//            System.out.println(code);
+//            write(code, inputFile);
+            try{
+                ast.check(); // Semantic analysis
+                String code = ast.gen();
+//                if(parser.consume() != null)
+//                    throw new SyntaxError("EOF expected");
+                if (inputFile != null)
+                    write(code, inputFile);
+                else
+                    System.out.println(code);
             }
-            String code = ast.gen();
-            System.out.println(code);
-            write(code, inputFile);
-//            if (ast.check()) { // Semantic analysis
-            //TODO : Check : renvoi faux si erreur
-            //TODO : rajouter le test de EOF pour erreur si not EOF
-            //TODO : déléguer division par 0 à GCC (si les tests ne passent pas, temps pis, l'indiquer dans le readme)
-/*            String code = ast.gen();
-            if (inputFile != null)
-                write(code, inputFile);
-            else
-                System.out.println(code);
-*/ //            } else
-//                throw new SemanticError();
-        } else
+            catch (SemanticException ex) {
+                throw ex;
+            }
+        }
+        else
             throw new SyntaxError();
     }
     // write code to .c file associated to .calc file passed as argument,

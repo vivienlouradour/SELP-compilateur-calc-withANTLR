@@ -1,0 +1,3 @@
+rm ~/Documents/IMT-A1/Langages-de-programmation/Partie2\ -\ Structure\ et\ execution\ des\ langages\ de\ programmation/CCalc/test/*.c
+rm ~/Documents/IMT-A1/Langages-de-programmation/Partie2\ -\ Structure\ et\ execution\ des\ langages\ de\ programmation/CCalc/test/*.out
+rm ~/Documents/IMT-A1/Langages-de-programmation/Partie2\ -\ Structure\ et\ execution\ des\ langages\ de\ programmation/CCalc/test/*.txt

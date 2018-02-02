@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.List;
+
 public class ParExpression extends Expression{
     private Expression expression;
 
@@ -8,8 +10,8 @@ public class ParExpression extends Expression{
     }
 
     @Override
-    public String gen() {
-        return "( " + this.expression.gen() + " )";
+    public String gen(List<Variable> vars) {
+        return "( " + this.expression.gen(vars) + " )";
     }
 
     @Override

@@ -1,6 +1,11 @@
 package ast;
 
+import calc.SemanticException;
+import eval.State;
+
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AST {
     public static String INDENT = "  ";
@@ -39,17 +44,22 @@ public abstract class AST {
      * Génère du code C
      * @return
      */
-    public abstract String gen();
+    public abstract String gen(List<Variable> vars);
+
+    public String gen(){
+        return this.gen(new ArrayList<>());
+    }
 
     public abstract ASTType getType();
 
-    public boolean check(){
-        try{
-            this.getType();
-            return true;
-        }
-        catch (Exception ex){
-            return false;
-        }
+    /**
+     * Vérifie la validité du typage du programme (boolean/int)
+     * @throws SemanticException
+     */
+    public void check() throws SemanticException{
+//        this.checkDeclarations(new ArrayList<>());
+        this.getType();
     }
+
+    //public abstract void checkDeclarations(List<Variable> vars);
 }

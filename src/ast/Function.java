@@ -2,6 +2,8 @@ package ast;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.List;
+
 public class Function extends AST {
     private String identifier;
 
@@ -14,7 +16,7 @@ public class Function extends AST {
     }
 
     @Override
-    public String gen() {
+    public String gen(List<Variable> vars) {
         //TODO : A FAIRE
         throw new NotImplementedException();
     }

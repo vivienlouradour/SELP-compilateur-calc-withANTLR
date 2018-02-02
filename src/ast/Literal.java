@@ -1,6 +1,8 @@
 package ast;
 
 
+import java.util.List;
+
 public class Literal extends Expression {
     private int value;
     public Literal(int value){
@@ -9,7 +11,7 @@ public class Literal extends Expression {
 
 
     @Override
-    public String gen() {
+    public String gen(List<Variable> vars) {
         return Integer.toString(this.value);
     }
 

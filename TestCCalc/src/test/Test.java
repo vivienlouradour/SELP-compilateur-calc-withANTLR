@@ -53,7 +53,10 @@ public abstract class Test {
 			try {
 			    Calc.main(args0);
 			} catch(Exception e){
-			    if (expectation.equals("error")) success++;
+			    if (expectation.equals("error")){
+					System.out.println("SUCCESS");
+			    	success++;
+				}
 			    System.err.println("==== Exception in compiler");
 			    e.printStackTrace();
 			    return;
@@ -79,7 +82,10 @@ public abstract class Test {
 				System.err.println("C code does not compile");
 			} else { // no C code produced
 			    System.err.println("No C code produced for " + fileName);
-			    if (expectation.equals("error")) success++;
+			    if (expectation.equals("error")){
+					System.out.println("SUCCESS");
+			    	success++;
+				}
 		     }
 		} catch(Exception e){
 		    System.err.println("==== Unexpected exception");
@@ -101,7 +107,7 @@ public abstract class Test {
 //		cmd[1] = "-c";
 //		cmd[2] = "/usr/bin/gcc " + CFilename;
 		String outputFileName = cFileName.replaceFirst("\\.c\\z", ".out");
-		String[] cmd = {SHELL, "-c", "gcc -o " + outputFileName + " " + cFileName};
+		String[] cmd = {SHELL, "-c", "gcc -o " + outputFileName + " " + cFileName}; //TODO: tester avec -Werror pour transformer warning en error (ex : div par )
 		Runtime.getRuntime().exec(cmd).waitFor();
 		return outputFileName;
 	}

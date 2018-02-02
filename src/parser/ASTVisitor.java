@@ -78,11 +78,11 @@ public class ASTVisitor extends CalcBaseVisitor<AST> {
         return new Variable(ctx.getText());
     }
 
-    @Override
-    public AST visitVariable(CalcParser.VariableContext ctx){
-
-        return new Variable(ctx.getText());
-    }
+//    @Override
+//    public AST visitVariable(CalcParser.VariableContext ctx){
+//
+//        return new Variable(ctx.getText());
+//    }
 
 
     @Override

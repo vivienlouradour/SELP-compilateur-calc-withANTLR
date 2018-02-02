@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.List;
+
 public class Boolean extends Expression{
     private boolean value;
 
@@ -8,7 +10,7 @@ public class Boolean extends Expression{
     }
 
     @Override
-    public String gen() {
+    public String gen(List<Variable> vars) {
         return value ? "1" : "0";
     }
 

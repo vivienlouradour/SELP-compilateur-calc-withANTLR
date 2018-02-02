@@ -16,7 +16,7 @@ public class FunctionCall extends Expression{
 
 
     @Override
-    public String gen() {
+    public String gen(List<Variable> vars) {
         //TODO : A FAIRE
         throw new NotImplementedException();
     }

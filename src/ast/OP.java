@@ -32,9 +32,11 @@ public enum OP {
         value = op;
     }
 
-    public String gen(){
+    @Override
+    public String toString(){
         return this.value;
     }
+
 
     public static OP parseOP(String op){
         switch (op){
