@@ -35,7 +35,7 @@ public class UnaryExpression extends Expression {
     }
 
     @Override
-    public void checkDeclarations(State<Variable> vars) {
+    public void checkDeclarations(State<ASTType> vars) {
         this.expression.checkDeclarations(vars);
     }
 }

@@ -19,7 +19,6 @@ public class BinaryExpression extends Expression {
     @Override
     public String gen() {
         return "( " + leftExpression.gen() + " " + operande.toString() + " " + rightExpression.gen() + " )";
-//        return leftExpression.toString() + " " + operande.toString() + " " + rightExpression.toString();
     }
 
 
@@ -67,7 +66,7 @@ public class BinaryExpression extends Expression {
     }
 
     @Override
-    public void checkDeclarations(State<Variable> vars) {
+    public void checkDeclarations(State<ASTType> vars) {
         this.rightExpression.checkDeclarations(vars);
         this.leftExpression.checkDeclarations(vars);
     }

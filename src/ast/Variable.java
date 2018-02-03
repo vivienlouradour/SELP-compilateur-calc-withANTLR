@@ -29,11 +29,12 @@ public class Variable extends Expression {
     }
 
     @Override
-    public void checkDeclarations(State<Variable> vars) {
-        Variable variable = vars.lookup(this.value);
-        if(variable == null)
+    public void checkDeclarations(State<ASTType> vars) {
+        ASTType varType = vars.lookup(this.value);
+        if(varType == null)
             throw new SemanticException(this + " not defined.");
-        this.setType(variable.getType());
+
+        this.setType(varType);
     }
 
     public void setType(ASTType type){

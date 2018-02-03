@@ -11,7 +11,6 @@ head     : '(' functionId variableId* ')'
 body     : varDef* expression EOF
          ;
 varDef   : variableId '=' expression
-         // | variableId '=' booleanExpression
          ;
 
 expression : LITERAL                                                    # Literal

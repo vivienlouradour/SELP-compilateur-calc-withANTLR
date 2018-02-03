@@ -30,7 +30,7 @@ public class ConditionalExpression extends Expression {
     }
 
     @Override
-    public void checkDeclarations(State<Variable> vars) {
+    public void checkDeclarations(State<ASTType> vars) {
         this.exp1.checkDeclarations(vars);
         this.exp2.checkDeclarations(vars);
         this.exp3.checkDeclarations(vars);

@@ -26,12 +26,13 @@ public class VarDef extends AST {
     }
 
     @Override
-    public void checkDeclarations(State<Variable> vars) {
+    public void checkDeclarations(State<ASTType> vars) {
         //Si la variable à déjà été définie
         if(vars.lookup(this.varId.getValue()) != null)
             throw new SemanticException(this + " already defined.");
+
+
         this.expr.checkDeclarations(vars);
-        this.varId.setType(this.expr.getType());
-        vars.put(this.varId.getValue(), this.varId);
+        vars.put(this.varId.getValue(), this.expr.getType());
     }
 }

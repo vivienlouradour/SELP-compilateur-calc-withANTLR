@@ -22,11 +22,11 @@ public class Program extends AST {
 
     @Override
     public ASTType getType() {
-        throw new NotImplementedException();
+        return this.body.getType();
     }
 
     @Override
-    public void checkDeclarations(State<Variable> vars) {
+    public void checkDeclarations(State<ASTType> vars) {
         throw new NotImplementedException();
     }
 }

@@ -61,7 +61,7 @@ public abstract class AST {
      * @throws SemanticException
      * @param vars
      */
-    public abstract void checkDeclarations(State<Variable> vars) throws SemanticException;
+    public abstract void checkDeclarations(State<ASTType> vars) throws SemanticException;
 
     /**
      * Calcule le type de retour de l'AST (Boolean ou Literal).

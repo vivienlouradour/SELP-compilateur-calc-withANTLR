@@ -36,7 +36,7 @@ public class Body extends AST {
     }
 
     @Override
-    public void checkDeclarations(State<Variable> vars) {
+    public void checkDeclarations(State<ASTType> vars) {
         defs.forEach(varDef -> varDef.checkDeclarations(vars));
         this.exp.checkDeclarations(vars);
     }
