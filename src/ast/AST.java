@@ -47,14 +47,6 @@ public abstract class AST {
 
 
     /**
-     * Calcule le type de retour de l'AST (Boolean ou Literal).
-     * Lance une SemanticException si il y a une incohérence de type (ex : a = 3 + true)
-     * @throws SemanticException
-     * @return
-     */
-    public abstract ASTType getType() throws SemanticException;
-
-    /**
      * Vérifie la validité du typage du programme (boolean/int)
      * @throws SemanticException
      */
@@ -70,4 +62,12 @@ public abstract class AST {
      * @param vars
      */
     public abstract void checkDeclarations(State<Variable> vars) throws SemanticException;
+
+    /**
+     * Calcule le type de retour de l'AST (Boolean ou Literal).
+     * Lance une SemanticException si il y a une incohérence de type (ex : a = 3 + true)
+     * @throws SemanticException
+     * @return
+     */
+    public abstract ASTType getType() throws SemanticException;
 }
